@@ -1,0 +1,22 @@
+{
+    "error": {
+        "invalid_items": "Vous n'avez pas les bons objets !"
+    },
+    "progress": {
+        "pick_grapes": "Récolte de raisins ...",
+        "process_wine": "Traitement du vin...",
+        "process_juice": "Traitement du jus de raisin..."
+    },
+    "task": {
+        "start_task": "[E] Pour commencer",
+        "vineyard_processing": "[E] Traitement du vignoble",
+        "cancel_task": "Vous avez annulé la tâche"
+    },
+    "menu": {
+        "title": "Traitement du vignoble",
+        "process_wine_title": "Traiter le vin",
+        "process_juice_title": "Traiter le jus de raisin",
+        "wine_items_needed": "Objet requis: Jus de raisin\nMontant requis: %s",
+        "juice_items_needed": "Objet requis: Raisin\nMontant requis: %s"
+    }
+}

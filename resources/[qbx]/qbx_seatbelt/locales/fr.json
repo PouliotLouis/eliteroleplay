@@ -1,0 +1,14 @@
+{
+    "progress": {
+        "attachHarness": "Attache le harnais de course",
+        "removeHarness": "Retire le harnais de course"
+    },
+    "notify": {
+        "notInCar": "Vous n'êtes pas dans une voiture"
+    },
+    "error": {
+        "seatbelton": "Enlevez d'abord votre ceinture de sécurité",
+        "harnesson": "Enlevez d'abord votre harnais de course"
+    },
+    "toggleCommand": "S'attacher/Se détacher"
+}

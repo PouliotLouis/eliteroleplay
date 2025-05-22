@@ -1,0 +1,44 @@
+{
+    "notify": {
+        "freedom": "Liberté!",
+        "new_time_by_roster": "Nouveau temps de prison",
+        "new_time_by_roster_description": "Votre temps de prison a été fixé à %s mois !",
+        "unjailed_by_roster": "Votre temps de prison a été fixé à zéro, vous êtes libéré !",
+        "no_access": "Vous n'avez pas accès à cette commande !",
+        "updated_players_time": "Temps de prison de %s mis à jour à %s mois",
+        "player_sent": "Envoyé %s en prison pour %s mois",
+        "time_updated_description": "Votre temps de prison a été fixé à %s mois",
+        "time_updated": "Temps de prison mis à jour",
+        "invalid_player": "Joueur invalide !",
+        "lost_job": "Vous avez perdu votre emploi !",
+        "confiscated": "Vos objets ont été confisqués !",
+        "returned_items": "Vous avez reçu vos objets confisqués !",
+        "player_released": "%s a été libéré !",
+        "lifer": "Vous êtes en prison à vie !",
+        "jail_time": "Temps de prison",
+        "time_left": "Vous avez %s mois restants.",
+        "no_time_left": "Vous n'avez plus de temps de prison !",
+        "time_remaining": "Temps restant : %s mois",
+        "completed_hack": "Vous avez réussi le hack !",
+        "failed_hack": "Vous avez échoué le hack !",
+        "escaped": "Vous vous êtes échappé de prison !",
+        "checkout": "Votre temps est écoulé ! Allez vous enregistrer !"
+    },
+    "commands": {
+        "jail": "Empriosionner quelqu'un",
+        "unjail": "Libérer quelqu'un",
+        "playerid": "ID du joueur",
+        "check_time": "Vérifier votre temps de prison",
+        "prisoners_roster": "Voir et gérer les prisonniers actuels"
+    },
+    "input": {
+        "jail_player": "Emprisonner un joueur",
+        "playerid": "ID du joueur",
+        "jailtime": "Temps de prison",
+        "months": "Mois ( Minutes )",
+        "hack_gate": "Pirater la porte de la prison",
+        "hacking": "Pirater le terminal...",
+        "check_time": "Vérifier le temps",
+        "prison_sentence": "**Peine de prison :** %s  \n%s"
+    }
+}

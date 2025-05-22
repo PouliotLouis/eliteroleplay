@@ -1,0 +1,16 @@
+{
+    "text": {
+        "enter_house": "[E] - Entrer",
+        "enter_requirements": "Si seulement j'avais mes outils...",
+        "leave_house": "[E] - Sortir",
+        "search": "[E] - Voler",
+        "pickup": "[E] - Prendre %s"
+    },
+    "notify": {
+        "no_police": "Pas assez de policier (%s requis)",
+        "fail_skillcheck": "Vous avez échoué...",
+        "success_skillcheck": "Vous avez réussi !",
+        "busy": "Quelqu'un est déjà sur le coup",
+        "police_alert": "Activité suspecte près d'une propriété"
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "timeUntilAFKKick": 1800,
+    "ignoreGroupsForAFK": {
+        "mod": true,
+        "admin": true
+    }
+}
