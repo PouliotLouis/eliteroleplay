@@ -10,7 +10,7 @@ return {
             max = 40,
         },
         ['cocaine_baggy'] = {
-            min = 50,
+            min = 55,
             max = 67,
         },
         ['meth_baggy'] = {

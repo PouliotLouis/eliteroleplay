@@ -36,6 +36,10 @@ return {
                 { name = "weed_baggy", count = 1 },
             },
             duration = 3250,
+            anim = {                          
+                dict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@",
+                clip = "machinic_loop_mechandplayer"
+            },
         }
     },
     meth = {
@@ -73,6 +77,10 @@ return {
                 { name = "meth_tray", count = 1 },
             },
             duration = 4250,
+            anim = {
+                dict = 'amb@world_human_gardener_plant@male@enter',
+                clip = 'enter'
+            },
         },
         transformation2 = {
             name = "méthamphétamine",
@@ -93,6 +101,10 @@ return {
                 { name = "meth_crystal", count = 20 },
             },
             duration = 2250,
+            anim = {                          
+                dict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@",
+                clip = "machinic_loop_mechandplayer"
+            },
         },
         transformation3 = {
             name = "sachet de méthamphétamine",
@@ -114,6 +126,10 @@ return {
                 { name = "meth_baggy", count = 1 },
             },
             duration = 3250,
+            anim = {                          
+                dict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@",
+                clip = "machinic_loop_mechandplayer"
+            },
         }
     },
     coke = {
@@ -154,6 +170,10 @@ return {
                 { name = "cocaine_tray", count = 1 },
             },
             duration = 3250,
+            anim = {                          
+                dict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@",
+                clip = "machinic_loop_mechandplayer"
+            },
         },
         transformation2 = {
             name = "sachet de cocaïne",
@@ -166,70 +186,20 @@ return {
             requiredItems = {
                 { name = "cocaine_tray", count = 1, message = "Vous n'avez pas assez de plateau de cocaïne." },
                 { name = "scale", count = 1, message = "Vous n'avez rien pour peser la cocaïne." },
-                { name = "empty_baggy", count = 1, message = "Vous n'avez rien pour ensacher la cocaïne." },
+                { name = "empty_baggy", count = 2, message = "Vous n'avez rien pour ensacher la cocaïne." },
             },
             receipeItems = {
                 { name = "cocaine_tray", count = 1 },
-                { name = "empty_baggy", count = 1 }
+                { name = "empty_baggy", count = 2 }
             },
             transformedItems = {
                 { name = "cocaine_baggy", count = 2 },
             },
             duration = 3250,
+            anim = {                          
+                dict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@",
+                clip = "machinic_loop_mechandplayer"
+            },
         }
     },
-    -- oxy = {
-    --     box_icon = "fas fa-capsules",
-    --     box_label = "Récolter de l'acide phosphorique",
-    --     item = "phosphoric_acid",
-    --     point_de_recolte = vec3(916.69, -1475.27, 30.52),
-    --     point_de_recolte_size = vec3(4, 3, 1.8),
-    --     point_de_recolte_rotation = 60,
-    --     point_de_recolte_debug = true,
-    --     recolte_min = 2,
-    --     recolte_max = 5,
-    --     message_recolte = {
-    --         title = "Récolte",
-    --         description = "Tu as récolté %s acides phosphoriques",
-    --         icon = "capsules",
-    --         iconColor = "#9900E0",
-    --         duration = 2500
-    --     }
-    -- },
-    -- oxy2 = {
-    --     box_icon = "fas fa-virus",
-    --     box_label = "Récolter la substance visqueuse",
-    --     item = "viscous_substance",
-    --     point_de_recolte = vec3(429.68, -566.61, 8.66),
-    --     point_de_recolte_size = vec3(4, 3, 1.8),
-    --     point_de_recolte_rotation = 0,
-    --     point_de_recolte_debug = true,
-    --     recolte_min = 2,
-    --     recolte_max = 5,
-    --     message_recolte = {
-    --         title = "Récolte",
-    --         description = "Tu as récolté %s substances visqueuses",
-    --         icon = "virus",
-    --         iconColor = "#3FC800",
-    --         duration = 2500
-    --     }
-    -- },
-    -- coke = {
-    --     box_icon = "fas fa-leaf",
-    --     box_label = "Récolter des feuilles de coca",
-    --     item = "coca_leaf",
-    --     point_de_recolte = vec3(1323.67, -1112.47, 41.85),
-    --     point_de_recolte_size = vec3(2, 2, 1.8),
-    --     point_de_recolte_rotation = 0,
-    --     point_de_recolte_debug = true,
-    --     recolte_min = 3,
-    --     recolte_max = 8,
-    --     message_recolte = {
-    --         title = "Récolte",
-    --         description = "Tu as récolté %s feuilles de coca",
-    --         icon = "leaf",
-    --         iconColor = "#FFFFFF",
-    --         duration = 2500
-    --     }
-    -- }
 }

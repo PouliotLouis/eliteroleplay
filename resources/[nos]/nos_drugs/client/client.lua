@@ -4,7 +4,7 @@ local OX_INV = exports.ox_inventory
 local drugs = require('config.drugs')
 local transfoConfig = require('config.transformation')
 
-local debug = true
+local debug = false
 
 for _, drug in pairs(drugs) do
     OX_TARG:addBoxZone({
@@ -36,6 +36,15 @@ for _, drug in pairs(drugs) do
                     TriggerServerEvent('nos_drugs:server:foundIllegal', false, 'commencé à récolter ➜ ' .. drug.harvest.name, drug)
 
                     while true do
+                        if not lib.callback.await('nos_drugs:server:hasInventorySpace', false, drug) then
+                            lib.notify({
+                                type = 'error',
+                                icon = drug.harvest.icon,
+                                description = "Vous n'avez plus de place dans vos poches !"
+                            })
+                            break
+                        end
+
                         local isHarvesting = lib.progressCircle({
                             label = 'Récolte en cours...',
                             position = 'bottom',
@@ -62,24 +71,7 @@ for _, drug in pairs(drugs) do
                             break
                         end
 
-                        local itemHarvested = lib.callback.await('nos_drugs:server:harvest', false, drug)
-
-                        if not itemHarvested then
-                            lib.notify({
-                                type = 'warning',
-                                icon = drug.harvest.icon,
-                                description = 'Vous avez arrêté de récolter puisque vous avez les poches pleines.'
-                            })
-                            break
-                        end
-
-                        lib.notify({
-                            type = 'success',
-                            icon = drug.harvest.icon,
-                            iconColor = drug.harvest.iconColor,
-                            duration = drug.harvest.duration,
-                            description = ('Vous avez récolté %d %s.'):format(itemHarvested, drug.harvest.name)
-                        })
+                        lib.callback.await('nos_drugs:server:harvest', false, drug)
                     end
                 end
             }
@@ -122,10 +114,7 @@ for _, drug in pairs(drugs) do
                                 move = true,
                                 combat = true
                             },
-                            anim = {
-                                dict = 'amb@world_human_gardener_plant@male@enter',
-                                clip = 'enter'
-                            },
+                            anim = drug.transformation.anim,
                         })
 
                         if not isTransforming then
@@ -182,10 +171,7 @@ for _, drug in pairs(drugs) do
                                     move = true,
                                     combat = true
                                 },
-                                anim = {                          
-                                    dict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@",
-                                    clip = "machinic_loop_mechandplayer"
-                                },
+                                anim = drug.transformation2.anim,
                             })
 
                             if not isTransforming then
@@ -243,10 +229,7 @@ for _, drug in pairs(drugs) do
                                     move = true,
                                     combat = true
                                 },
-                                anim = {                          
-                                    dict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@",
-                                    clip = "machinic_loop_mechandplayer"
-                                },
+                                anim = drug.transformation3.anim,
                             })
 
                             if not isTransforming then

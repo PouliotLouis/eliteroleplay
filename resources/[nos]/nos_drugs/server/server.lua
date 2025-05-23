@@ -18,6 +18,18 @@ RegisterNetEvent('nos_drugs:server:foundIllegal', function(src, a, d)
     })
 end)
 
+lib.callback.register('nos_drugs:server:hasInventorySpace', function(src, drug)
+    local src = src or source
+    local xPlayer = QBX:GetPlayer(src)
+    if not xPlayer then return end
+
+    if OX_INV:CanCarryItem(src, drug.harvest.item, drug.harvest.max) then
+        return true
+    else
+        return false
+    end
+end)
+
 lib.callback.register('nos_drugs:server:hasItemsToTransform', function(src, drug, transformType)
     local src = src or source
     local xPlayer = QBX:GetPlayer(src)
@@ -72,12 +84,7 @@ lib.callback.register('nos_drugs:server:harvest', function(src, drug)
 
     local count = math.random(drug.harvest.min, drug.harvest.max)
     
-    if OX_INV:CanCarryItem(src, drug.harvest.item, count) then
-        OX_INV:AddItem(src, drug.harvest.item, count, nil, nil)
-        return count
-    else
-        return false
-    end
+    OX_INV:AddItem(src, drug.harvest.item, count, nil, nil)
 end)
 
 lib.callback.register('nos_drugs:server:transformItems', function(src, drug, transformType)
