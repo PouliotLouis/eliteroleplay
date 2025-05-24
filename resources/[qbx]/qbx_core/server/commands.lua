@@ -233,7 +233,7 @@ lib.addCommand('givemoney', {
     logger.log({
         source = adminName,
         webhook = config.logging.webhook['admin'],
-        event = 'Give Money',
+        event = 'GiveMoney',
         color = 'green',
         tags = config.logging.role,
         message = ("%s a utilisé la commande `/givemoney %d %s %d`.\n\n%s (ID: %d) a reçu %s $ en %s."):format(adminName, args['id'], args['moneytype'], args['amount'], joueurName, args['id'], formatNumber(args['amount']), args['moneytype'])
@@ -287,6 +287,11 @@ lib.addCommand('setjob', {
 
     if player.PlayerData.job.name == 'police' then
         TriggerClientEvent('wasabi_police:client:checkDuty', player.PlayerData.source)
+    elseif player.PlayerData.job.name == 'ems' then
+        TriggerClientEvent('wasabi_ambulance:client:checkDuty', player.PlayerData.source)
+    else
+        -- Retirer tout ce qui est lié à aux métiers
+        TriggerClientEvent('NosCore:client:RemoveRadialItem', player.PlayerData.source, {'toggleDuty', 'custom_police_menu', 'custom_police_menu_vehicle'})
     end
 end)
 

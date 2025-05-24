@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 
 author 'NosFPS'
-description 'nos-drugs - Drug System for NosFiveM'
+description 'nos_drugs - Drug System for NosFiveM'
 version '1.0.0'
 
 client_scripts {
@@ -20,4 +20,3 @@ shared_scripts {
 }
 
 lua54 'yes'
-use_experimental_fxv2_oal 'yes'

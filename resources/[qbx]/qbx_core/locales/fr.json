@@ -61,8 +61,7 @@
         "select_gender": "Sélectionnez votre genre",
         "check_id": "Vérifier votre ID Serveur",
         "confirm_delete": "Êtes-vous sûr de vouloir supprimer ce personnage?",
-        "in_queue": "🐌 Vous êtes %s/%s dans la queue. (%s) %s",
-        "toggle_duty": "Prendre son service/sa fin de service"
+        "in_queue": "🐌 Vous êtes %s/%s dans la queue. (%s) %s"
     },
     "command": {
         "tp": {

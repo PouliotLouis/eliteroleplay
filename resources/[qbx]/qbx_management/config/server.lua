@@ -1,5 +1,5 @@
 return {
-    discordWebhook = nil, -- Replace nil with your webhook if you chose to use discord logging over ox_lib logging
+    discordWebhook = "https://discord.com/api/webhooks/1375617322479386634/hZm28wy91F4G3IwRoOFVwJpDHOrgvRmGXb0noxiQ_CHGmIkbVZx9B9SFuS2LpB0Z6dpa", -- Replace nil with your webhook if you chose to use discord logging over ox_lib logging
     minOnDutyLogTimeMinutes = 30,
     formatDateTime = '%d-%m-%Y %H:%M',
 

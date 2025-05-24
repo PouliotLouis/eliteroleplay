@@ -11,12 +11,6 @@ return {
             label = 'Citoyen',
             items = {
                 {
-                    id = 'givenum',
-                    icon = 'address-book',
-                    label = 'Partager contact info',
-                    event = 'qb-phone:client:GiveContactDetails'
-                },
-                {
                     id = 'getintrunk',
                     icon = 'car',
                     label = 'Entrer dans le coffre',
@@ -27,61 +21,6 @@ return {
                     icon = 'cannabis',
                     label = 'Vendre de la drogue',
                     event = 'qb-drugs:client:cornerselling'
-                },
-                {
-                    id = 'interactions',
-                    icon = 'exclamation-triangle',
-                    label = 'Interactions',
-                    items = {
-                        {
-                            id = 'handcuff',
-                            icon = 'user-lock',
-                            label = 'Menotter',
-                            event = 'police:client:CuffPlayer',
-                        },
-                        {
-                            id = 'handcuff2',
-                            icon = 'user-lock',
-                            label = 'Menotter (Soft)',
-                            event = 'police:client:CuffPlayerSoft',
-                        },
-                        {
-                            id = 'playerInVehicle',
-                            icon = 'car-side',
-                            label = 'Mettre dans le véhicule',
-                            event = 'police:client:PutPlayerInVehicle',
-                        },
-                        {
-                            id = 'playerOutVehicle',
-                            icon = 'car-side',
-                            label = 'Sortir du véhicule',
-                            event = 'police:client:SetPlayerOutVehicle',
-                        },
-                        {
-                            id = 'stealPlayer',
-                            icon = 'mask',
-                            label = 'Voler',
-                            event = 'police:client:RobPlayer',
-                        },
-                        {
-                            id = 'kidnapPlayer',
-                            icon = 'user-group',
-                            label = 'Kidnapper',
-                            event = 'police:client:KidnapPlayer',
-                        },
-                        {
-                            id = 'escortPlayer',
-                            icon = 'user-group',
-                            label = 'Escorter',
-                            event = 'police:client:EscortPlayer',
-                        },
-                        {
-                            id = 'takeHostage',
-                            icon = 'child',
-                            label = 'Prendre en otage',
-                            event = 'police:client:TakeHostage',
-                        },
-                    },
                 },
             },
         },
@@ -328,78 +267,78 @@ return {
         --     },
         -- },
         ambulance = {
-            {
-                id = 'statusCheck',
-                icon = 'heart-pulse',
-                label = "Vérifie l'état de santé",
-                event = 'hospital:client:CheckStatus',
-            },
-            {
-                id = 'revive',
-                icon = 'user-doctor',
-                label = 'Réanimer',
-                event = 'hospital:client:RevivePlayer',
-            },
-            {
-                id = 'treatWounds',
-                icon = 'bandage',
-                label = 'Guérir les blessures',
-                event = 'hospital:client:TreatWounds',
-            },
-            {
-                id = 'emergencyButton',
-                icon = 'bell',
-                label = "Bouton d'urgence",
-                serverEvent = 'hospital:server:emergencyAlert',
-            },
-            {
-                id = 'escort',
-                icon = 'user-group',
-                label = 'Escorter',
-                event = 'police:client:EscortPlayer',
-            },
+            -- {
+            --     id = 'statusCheck',
+            --     icon = 'heart-pulse',
+            --     label = "Vérifie l'état de santé",
+            --     event = 'hospital:client:CheckStatus',
+            -- },
+            -- {
+            --     id = 'revive',
+            --     icon = 'user-doctor',
+            --     label = 'Réanimer',
+            --     event = 'hospital:client:RevivePlayer',
+            -- },
+            -- {
+            --     id = 'treatWounds',
+            --     icon = 'bandage',
+            --     label = 'Guérir les blessures',
+            --     event = 'hospital:client:TreatWounds',
+            -- },
+            -- {
+            --     id = 'emergencyButton',
+            --     icon = 'bell',
+            --     label = "Bouton d'urgence",
+            --     serverEvent = 'hospital:server:emergencyAlert',
+            -- },
+            -- {
+            --     id = 'escort',
+            --     icon = 'user-group',
+            --     label = 'Escorter',
+            --     event = 'police:client:EscortPlayer',
+            -- },
         },
         mechanic = {
-            {
-                id = 'towVehicle',
-                icon = 'truck-pickup',
-                label = 'Remorquer le véhicule',
-                event = 'qb-tow:client:TowVehicle',
-            },
+            -- {
+            --     id = 'towVehicle',
+            --     icon = 'truck-pickup',
+            --     label = 'Remorquer le véhicule',
+            --     event = 'qb-tow:client:TowVehicle',
+            -- },
         },
         taxi = {
-            {
-                id = 'togglemeter',
-                icon = 'eye-slash',
-                label = 'Show/Hide Meter',
-                event = 'qb-taxi:client:toggleMeter',
-            },
-            {
-                id = 'togglemouse',
-                icon = 'hourglass-start',
-                label = 'Start/Stop Meter',
-                event = 'qb-taxi:client:enableMeter',
-            },
-            {
-                id = 'npcMission',
-                icon = 'taxi',
-                label = 'NPC Mission',
-                event = 'qb-taxi:client:DoTaxiNpc',
-            },
+            -- {
+            --     id = 'togglemeter',
+            --     icon = 'eye-slash',
+            --     label = 'Show/Hide Meter',
+            --     event = 'qb-taxi:client:toggleMeter',
+            -- },
+            -- {
+            --     id = 'togglemouse',
+            --     icon = 'hourglass-start',
+            --     label = 'Start/Stop Meter',
+            --     event = 'qb-taxi:client:enableMeter',
+            -- },
+            -- {
+            --     id = 'npcMission',
+            --     icon = 'taxi',
+            --     label = 'NPC Mission',
+            --     event = 'qb-taxi:client:DoTaxiNpc',
+            -- },
         },
         tow = {
-            {
-                id = 'togglenpc',
-                icon = 'toggle-on',
-                label = 'Toggle NPC',
-                event = 'jobs:client:ToggleNpc',
-            },
-            {
-                id = 'towVehicle',
-                icon = 'truck-pickup',
-                label = 'Remorquer le véhicule',
-                event = 'qb-tow:client:TowVehicle',
-            },
+            -- {
+            --     id = 'togglenpc',
+            --     icon = 'toggle-on',
+            --     label = 'Toggle NPC',
+            --     event = 'jobs:client:ToggleNpc',
+            -- },
+            -- {
+            --     id = 'towVehicle',
+            --     icon = 'truck-pickup',
+            --     label = 'Remorquer le véhicule',
+            --     event = 'qb-tow:client:TowVehicle',
+            -- },
         },
     },
 

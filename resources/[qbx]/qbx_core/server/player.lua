@@ -713,6 +713,12 @@ function Logout(source)
     player.PlayerData.metadata.thirst = playerState?.thirst or player.PlayerData.metadata.thirst
     player.PlayerData.metadata.stress = playerState?.stress or player.PlayerData.metadata.stress
 
+    local playerName = GetPlayerName(source)
+    local discordId = string.gsub(GetPlayerIdentifierByType(source, 'discord'), "discord:", "") or 'undefined'
+    local playerIP = string.gsub(GetPlayerIdentifierByType(source, 'ip'), "ip:", "") or 'undefined'
+    local license2 = string.gsub(GetPlayerIdentifierByType(source, 'license2'), "license2:", "") or GetPlayerIdentifierByType(source, 'license') or 'undefined'
+    local citizenId = player.PlayerData.citizenid
+
     TriggerClientEvent('QBCore:Client:OnPlayerUnload', source)
     TriggerEvent('QBCore:Server:OnPlayerUnload', source)
 
@@ -724,6 +730,22 @@ function Logout(source)
     GlobalState.PlayerCount -= 1
     TriggerClientEvent('qbx_core:client:playerLoggedOut', source)
     TriggerEvent('qbx_core:server:playerLoggedOut', source)
+
+    logger.log({
+        source = 'Élite Roleplay',
+        webhook = config.logging.webhook['joinleave'],
+        event = 'Joueur déconnecté',
+        color = 'red',
+        message = (
+            '**%s**\n' ..
+            'Discord ID: %s\n' ..
+            'IP: ||%s||\n' ..
+            'license2: %s\n' .. 
+            'citizenId: %s\n' ..
+            'ID joueur: %s\n' ..
+            'Raison: %s'
+        ):format(playerName, discordId, playerIP, license2, citizenId, source, 'Le joueur a utilisé la commande /logout.')
+    })
 end
 
 exports('Logout', Logout)

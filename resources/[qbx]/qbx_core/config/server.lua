@@ -93,17 +93,16 @@ return {
     -- this configuration is for core events only. putting other webhooks here will have no effect
     logging = {
         webhook = {
-            ['default'] = nil, -- default
-            ['joinleave'] = nil, -- default
-            ['ooc'] = nil, -- default
-            ['anticheat'] = "https://discord.com/api/webhooks/1374083521756397608/SWYHXkbVITIjCMyjtEhBcuE017wQsU47JcRN865jAGXyL_6AuBNTdZC1qA66HlMsDV_3", -- default
-            ['playermoney'] = nil, -- default
-            ['admin'] = "https://discord.com/api/webhooks/1374083521756397608/SWYHXkbVITIjCMyjtEhBcuE017wQsU47JcRN865jAGXyL_6AuBNTdZC1qA66HlMsDV_3",
-            ['drogues'] = "https://discord.com/api/webhooks/1374238604636717106/FQunugSBSPp-x_pc5JVosmJWgy9b9b0sKyegTAk1w0oqnihkcbCztE4T5YJUoJgVGksS"
+            ['default'] = "https://discord.com/api/webhooks/1375616300574969917/0Lu7Hb3rmtb1ubJcE8RfJwUCgW7CWO8Nnnqc6vrjuigc2RJo8-DRAZggkuvyeSY_rcYC", -- default
+            ['joinleave'] = "https://discord.com/api/webhooks/1375616300574969917/0Lu7Hb3rmtb1ubJcE8RfJwUCgW7CWO8Nnnqc6vrjuigc2RJo8-DRAZggkuvyeSY_rcYC", -- default
+            ['ooc'] = "https://discord.com/api/webhooks/1375616300574969917/0Lu7Hb3rmtb1ubJcE8RfJwUCgW7CWO8Nnnqc6vrjuigc2RJo8-DRAZggkuvyeSY_rcYC", -- default
+            ['anticheat'] = "https://discord.com/api/webhooks/1375613925923487924/3a5ICI36bWmtdXkqWWJHi2xSLUrznCdSzlXTcTwuBoW-zzqaQ4E1jkr8VTpsYk3TcvwH", -- default
+            ['playermoney'] = "https://discord.com/api/webhooks/1375613925923487924/3a5ICI36bWmtdXkqWWJHi2xSLUrznCdSzlXTcTwuBoW-zzqaQ4E1jkr8VTpsYk3TcvwH", -- default
+            ['admin'] = "https://discord.com/api/webhooks/1375613925923487924/3a5ICI36bWmtdXkqWWJHi2xSLUrznCdSzlXTcTwuBoW-zzqaQ4E1jkr8VTpsYk3TcvwH",
+            ['drogues'] = "https://discord.com/api/webhooks/1375613510939312178/C8INy5y4V86nJvzJaTJ01B5_KWryLnTOvWNxQtaYKY8d8gFG1PfBxSDy5-PMvwqcTWzL"
         },
         role = {
-            "<@&1368735467624730624>", -- Propriétaire 👑
-            "<@&1368735803529756834>" -- Administrateurs 🦸🏻
+            "<@&1375614120191328298>", -- Propriétaire 👑
         } -- Role to tag for high priority logs. Roles use <@%roleid> and users/channels are <@userid/channelid>
     },
 

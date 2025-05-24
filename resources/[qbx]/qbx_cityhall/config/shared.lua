@@ -23,7 +23,7 @@ return {
                     cost = 1250,
                 },
                 ['weapon'] = {
-                    item = 'weaponlicense',
+                    item = 'weapon_license',
                     label = "License d'arme",
                     cost = 750,
                 },
@@ -32,7 +32,7 @@ return {
     },
 
     employment = {
-        enabled = true, -- Set to false to disable the employment menu
+        enabled = false, -- Set to false to disable the employment menu
         jobs = {
             unemployed = 'Unemployed',
             trucker = 'Trucker',

@@ -11,7 +11,6 @@ OnlinePoliceCount = 0
 local oldJob = nil
 if wsb.framework == 'qb' then QBCore = exports['qb-core']:GetCoreObject() end
 
-
 RegisterNetEvent('wasabi_police:tackled', function(targetId)
     getTackled(targetId)
 end)
@@ -33,9 +32,6 @@ AddEventHandler('wasabi_bridge:onPlayerSpawn', function()
         escorted.active = nil
         escorted.pdId = nil
     end
-
-    print('wasabi_bridge:onPlayerSpawn')
-    TriggerEvent('wasabi_police:client:checkDuty', nil, nil) -- Vérifie le statut de service du joueur au démarrage
 end)
 
 AddEventHandler('wasabi_bridge:onPlayerLogout', function()
@@ -74,6 +70,7 @@ RegisterNetEvent('wasabi_bridge:playerLoaded', function()
         if wsb.isOnDuty() then
             TriggerServerEvent('wasabi_police:addPoliceCount', true)
         end
+
         if Config.GPSBlips.enabled and not Config.GPSBlips.item then
             if wsb.framework == 'qb' and wsb.isOnDuty() then
                 TriggerServerEvent('wasabi_police:addOfficerToGPS')
@@ -82,6 +79,7 @@ RegisterNetEvent('wasabi_bridge:playerLoaded', function()
             end
         end
     end
+
     TriggerServerEvent('wasabi_police:getPoliceOnline')
 end)
 
@@ -1107,9 +1105,6 @@ CreateThread(function()
     if Config.UseRadialMenu then
         AddRadialItems()
     end
-
-    -- Ajout du toggle duty dans le menu radial
-    TriggerEvent('wasabi_police:client:checkDuty', nil, nil)
 
     if Config.useTarget then
         local pdJobs = JobArrayToTarget(Config.policeJobs)

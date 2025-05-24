@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 
 author 'NosFPS'
-description 'nos-warehouse - Entering mlo'
+description 'nos_IPLs - Entering mlo'
 version '1.0.0'
 
 client_scripts {

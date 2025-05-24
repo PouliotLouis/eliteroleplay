@@ -20,7 +20,7 @@ return {
             backgroundImage = 'https://i.ibb.co/vxvGzg1/card.png',
             prop = 'prop_franklin_dl',
         },
-        ['weaponlicense'] = {
+        ['weapon_license'] = {
             header = "Permis d'arme",
             background = '#c7ffe5',
             backgroundImage = 'https://i.ibb.co/vxvGzg1/card.png',

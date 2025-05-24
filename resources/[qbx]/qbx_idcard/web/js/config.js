@@ -10,7 +10,7 @@ const config = {
     licenses: {
         'id_card': {
             header: 'Identity',
-            background: '#ebf7fd',            
+            background: '#ebf7fd',
             backgroundImage: 'https://i.ibb.co/vxvGzg1/card.png',
             prop: 'prop_franklin_dl'
         },
@@ -20,7 +20,7 @@ const config = {
             backgroundImage: 'https://i.ibb.co/vxvGzg1/card.png',
             prop: 'prop_franklin_dl',
         },
-        'weaponlicense': {
+        'weapon_license': {
             header: 'Weapon License',
             background: '#c7ffe5',
             backgroundImage: 'https://i.ibb.co/vxvGzg1/card.png',

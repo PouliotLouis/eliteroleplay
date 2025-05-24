@@ -122,36 +122,26 @@ RegisterNetEvent('wasabi_police:client:checkDuty', function(src, toggleDuty)
 	end
 
 	if dutyStatus then
-		-- Si le joueur est en service, ajoute l'élément de menu radial pour se déconnecter
+		addRadialItemCustomPoliceMenu()
+
 		OX:addRadialItem({
 			id = 'toggleDuty',
 			icon = 'user-xmark',
 			label = "Prendre sa fin de service",
 			onSelect = function()
-				removeRadialPoliceMenu()
 				TriggerEvent('wasabi_police:toggleDuty')
 			end
 		})
-
-		-- Au démarrage si le joueur est en service, ajoute le menu radial de la police
-		if toggleDuty == nil then
-			addRadialItemCustomPoliceMenu()
-		end
 	else
-		-- Si le joueur n'est pas en service, ajoute l'élément de menu radial pour se connecter
+		removeRadialPoliceMenu()
+
 		OX:addRadialItem({
 			id = 'toggleDuty',
 			icon = 'user-check',
 			label = "Prendre son service",
 			onSelect = function()
-				addRadialItemCustomPoliceMenu()
 				TriggerEvent('wasabi_police:toggleDuty')
 			end
 		})
-
-		-- Au changement de grade ou job
-		if toggleDuty == nil then
-			removeRadialPoliceMenu()
-		end
 	end
 end)

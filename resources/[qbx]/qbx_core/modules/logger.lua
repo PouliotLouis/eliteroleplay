@@ -51,7 +51,7 @@ local allowedErr = {
 ---@param payload DiscordLog Queue
 local function logPayload(payload)
     local tags
-    local username = 'Élite Logs'
+    local username = 'Élite Roleplay'
     local avatarUrl = 'https://elite.gtarp.ca/img/logo-bot-logs.png'
 
     if payload.tags then

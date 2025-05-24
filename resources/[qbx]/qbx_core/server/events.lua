@@ -42,13 +42,30 @@ AddEventHandler('playerDropped', function(reason)
     GlobalState.PlayerCount = GetNumPlayerIndices()
     local player = QBX.Players[src]
     player.PlayerData.lastLoggedOut = os.time()
+
+    local playerName = GetPlayerName(src)
+    local discordId = string.gsub(GetPlayerIdentifierByType(source, 'discord'), "discord:", "") or 'undefined'
+    local playerIP = string.gsub(GetPlayerIdentifierByType(source, 'ip'), "ip:", "") or 'undefined'
+    local license2 = string.gsub(GetPlayerIdentifierByType(source, 'license2'), "license2:", "") or GetPlayerIdentifierByType(source, 'license') or 'undefined'
+    local citizenId = player.PlayerData.citizenid
+    local source = src or 'undefined'
+
     logger.log({
-        source = 'qbx_core',
+        source = 'Élite Roleplay',
         webhook = loggingConfig.webhook['joinleave'],
-        event = 'Dropped',
+        event = 'Joueur déconnecté',
         color = 'red',
-        message = ('**%s** (%s) left...\n **Reason:** %s'):format(GetPlayerName(src), player.PlayerData.license, reason),
+        message = (
+            '**%s**\n' ..
+            'Discord ID: %s\n' ..
+            'IP: ||%s||\n' ..
+            'license2: %s\n' .. 
+            'citizenId: %s\n' ..
+            'ID joueur: %s\n' ..
+            'Raison: %s'
+        ):format(playerName, discordId, playerIP, license2, citizenId, source, reason)
     })
+    
     player.Functions.Save()
     QBX.Player_Buckets[player.PlayerData.license] = nil
     QBX.Players[src] = nil

@@ -41,12 +41,25 @@ lib.callback.register('qbx_core:server:loadCharacter', function(source, citizenI
     local success = Login(source, citizenId)
     if not success then return end
 
+    local playerName = GetPlayerName(source)
+    local discordId = string.gsub(GetPlayerIdentifierByType(source, 'discord'), "discord:", "") or 'undefined'
+    local playerIP = string.gsub(GetPlayerIdentifierByType(source, 'ip'), "ip:", "") or 'undefined'
+    local license2 = string.gsub(GetPlayerIdentifierByType(source, 'license2'), "license2:", "") or GetPlayerIdentifierByType(source, 'license') or 'undefined'
+    local source = source or 'undefined'
+
     logger.log({
-        source = 'qbx_core',
+        source = 'Élite Roleplay',
         webhook = config.logging.webhook['joinleave'],
-        event = 'Loaded',
+        event = 'Joueur connecté',
         color = 'green',
-        message = ('**%s** (%s |  ||%s|| | %s | %s | %s) loaded'):format(GetPlayerName(source), GetPlayerIdentifierByType(source, 'discord') or 'undefined', GetPlayerIdentifierByType(source, 'ip') or 'undefined', GetPlayerIdentifierByType(source, 'license2') or GetPlayerIdentifierByType(source, 'license') or 'undefined', citizenId, source)
+        message = (
+            '**%s**\n' ..
+            'Discord ID: %s\n' ..
+            'IP: ||%s||\n' ..
+            'license2: %s\n' .. 
+            'citizenId: %s\n' ..
+            'ID joueur: %s'
+        ):format(playerName, discordId, playerIP, license2, citizenId, source)
     })
     lib.print.info(('%s (Citizen ID: %s ID: %s) has successfully loaded!'):format(GetPlayerName(source), citizenId, source))
 end)

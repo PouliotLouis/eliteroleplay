@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 
 author 'NosFPS'
-description 'nos-hunting - Hunting script by NosFPS'
+description 'nos_hunting - Hunting script by NosFPS'
 version '1.0.0'
 
 client_scripts {

@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 
 author 'NosFPS'
-description 'nos-loading - Loading Screen for NosFiveM'
+description 'nos_loading - Loading Screen for NosFiveM'
 version '1.0.0'
 
 files {
