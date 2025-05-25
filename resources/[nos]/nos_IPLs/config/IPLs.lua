@@ -46,7 +46,75 @@ return {
             rotation = 0.0,
         },
         spawn_exit = vec4(986.63, -2211.43, 37.05, 356.0)
-    }
+    },
+
+
+    -- Ascenseur 1 vers garage
+    pillbox = {
+        name = "pillbox",
+        icon = "fa-solid fa-hospital",
+        iconColor = "#0390FC",
+        -- Garage ascenseur
+        entrance = {
+            label = "Monter au 3e étage",
+            coords = vec3(342.2, -585.45, 29.3),
+            size = vec3(3.9, 3.8, 3.1),
+            rotation = 70.0,
+        },
+        spawn_entrance = vec4(330.43, -601.15, 43.28, 72.06),
+        -- 3e étage ascenseur
+        exit = {
+            label = "Descendre au garage",
+            coords = vec3(330.55, -601.25, 43.5),
+            size = vec3(0.55, 2.85, 2.45),
+            rotation = 340.5,
+        },
+        spawn_exit = vec4(341.28, -585.08, 28.8, 77.44),
+    },
+    -- Ascenseur 2 vers garage
+    pillbox2 = {
+        name = "pillbox",
+        icon = "fa-solid fa-hospital",
+        iconColor = "#0390FC",
+        -- Garage ascenseur
+        entrance = {
+            label = "Monter au 3e étage",
+            coords = vec3(343.55, -581.75, 29.3),
+            size = vec3(3.85, 4.2, 3.3),
+            rotation = 70.0,
+        },
+        spawn_entrance = vec4(332.33, -595.66, 43.28, 78.53),
+        -- 3e étage ascenseur
+        exit = {
+            label = "Descendre au garage",
+            coords = vec3(332.6, -595.8, 43.45),
+            size = vec3(0.5, 2.9, 2.5),
+            rotation = 339.25,
+        },
+        spawn_exit = vec4(342.81, -581.49, 28.8, 70.19),
+    },
+    -- Ascenseur 3 vers toit
+    pillbox3 = {
+        name = "pillbox",
+        icon = "fa-solid fa-hospital",
+        iconColor = "#0390FC",
+        -- Garage ascenseur
+        entrance = {
+            label = "Monter au toit",
+            coords = vec3(327.05, -604.1, 43.45),
+            size = vec3(0.6, 2.9, 2.55),
+            rotation = 69.75,
+        },
+        spawn_entrance = vec4(338.55, -583.81, 74.16, 258.11),
+        -- 3e étage ascenseur
+        exit = {
+            label = "Descendre au 3e étage",
+            coords = vec3(338.3, -583.75, 74.35),
+            size = vec3(0.4, 3.25, 2.45),
+            rotation = 159.75,
+        },
+        spawn_exit = vec4(327.14, -603.64, 43.28, 341.2),
+    },
 
     -- Drugs
     -- Meth Lab (MC Business) ➜ 996.85, -3200.68, -36.39

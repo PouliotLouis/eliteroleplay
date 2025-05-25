@@ -10,10 +10,10 @@ for _, IPL in pairs(IPLs) do
         rotation = IPL.entrance.rotation,
         drawSprite = false,
         options = {
-            label = "Entrer dans le batiment",
+            label = IPL.entrance.label or "Entrer dans le batiment",
             distance = 1,
             icon = IPL.icon,
-            iconColor = "red",
+            iconColor = IPL.iconColor or "red",
             onSelect = function ()
                 local ped = cache.ped or PlayerPedId()
 
@@ -38,10 +38,10 @@ for _, IPL in pairs(IPLs) do
         rotation = IPL.exit.rotation,
         drawSprite = false,
         options = {
-            label = "Sortir du batiment",
+            label = IPL.exit.label or "Sortir du batiment",
             distance = 1,
             icon = IPL.icon,
-            iconColor = "red",
+            iconColor = IPL.iconColor or "red",
             onSelect = function ()
                 local ped = cache.ped or PlayerPedId()
 

@@ -92,6 +92,21 @@ function PLY:GetOtherPedServerId()
 	return nil
 end
 
+-- Wars2X ajout veh pour la commande
+local whitelistHashes = {
+    ['pchall18'] = true,
+    ['pcharger18'] = true,
+    ['pcts20'] = true,
+    ['pdurango21'] = true,
+    ['pexp20'] = true,
+    ['pf15018'] = true,
+    ['pgt3rs21'] = true,
+    ['ptahoe18'] = true,
+    ['ptaurus13'] = true,
+    ['pvic11'] = true,
+    ['pwrx15'] = true,
+}
+
 -- The main purpose of this thread is to update the information about the local player, including their
 -- ped id, the vehicle id (if they're in one), whether they're in a driver seat, and if the vehicle's class
 -- is valid or not
@@ -101,7 +116,11 @@ Citizen.CreateThread( function()
 		PLY.veh = GetVehiclePedIsIn( PLY.ped, false )
 		PLY.inDriverSeat = GetPedInVehicleSeat( PLY.veh, -1 ) == PLY.ped
 		PLY.inPassengerSeat = GetPedInVehicleSeat( PLY.veh, 0 ) == PLY.ped
-		PLY.vehClassValid = GetVehicleClass( PLY.veh ) == 18
+
+		local playerVehModel = GetEntityModel(PLY.veh)
+		local playerVehName = GetDisplayNameFromVehicleModel(playerVehModel)
+
+		PLY.vehClassValid = GetVehicleClass( PLY.veh ) == 18 and whitelistHashes[playerVehName]
 
 		Citizen.Wait( 500 )
 	end

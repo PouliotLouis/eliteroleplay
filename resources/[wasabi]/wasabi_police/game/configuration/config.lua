@@ -540,7 +540,7 @@ Config.Locations = {
             distance = 3.0,                        -- Distance to allow access/prompt with text UI (If not using target)
             target = {
                 enabled = true,                   -- If enabled, the location and distance above will be obsolete
-                label = 'Ouvrir son ordinateur',
+                label = 'Ordinateur patron',
                 coords = vec3(461.45, -986.20, 30.7),
                 heading = 269.85,
                 distance = 2.0,
@@ -936,11 +936,11 @@ Config.Locations = {
                     }
                 },
                 air = {
-                    [1] = {
+                    [0] = {
                         coords = vec3(449.29, -981.76, 43.69), -- Coords of where air vehicles spawn/return
                         heading = 0.01
                     },
-                    [2] = {
+                    [1] = {
                         coords = vec3(481.64, -983.18, 41.39),
                         heading = 0.01
                     }
@@ -1272,7 +1272,7 @@ Config.Locations = {
                     ['polmav2'] = { 
                         label = 'Maverick',
                         category = 'air',
-                        livery = 1,
+                        livery = 0,
                     },
                 },
 
@@ -1574,7 +1574,7 @@ Config.Locations = {
                     ['polmav2'] = { 
                         label = 'Maverick',
                         category = 'air',
-                        livery = 1,
+                        livery = 0,
                     },
                 },
 
@@ -2002,7 +2002,7 @@ Config.Locations = {
                     ['polmav2'] = { 
                         label = 'Maverick',
                         category = 'air',
-                        livery = 1,
+                        livery = 0,
                     },
                 },
 

@@ -478,8 +478,8 @@ Config.Locations = {
             Label = '[E] - Access Boss Menu',      -- Text UI label string (If not using target)
             Distance = 2.5,                        -- Distance to allow access/prompt with text UI (If not using target)
             Target = {
-                enabled = false,                   -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
-                label = 'Access Boss Menu',
+                enabled = true,                   -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
+                label = 'Ordinateur patron',
                 coords = vec3(335.59, -594.33, 43.21),
                 heading = 269.85,
                 width = 2.0,
@@ -495,7 +495,7 @@ Config.Locations = {
             Coords = vec3(308.58, -595.31, 43.28 - 0.9), -- Coords of ped
             Distance = 4.85,                             -- Distance to show textUI (If target is not enabled below)
             Heading = 63.26,                             -- Heading of ped
-            Cost = 500,                                  -- Cost of using hospital check-in. Set to false for free
+            Cost = 250,                                  -- Cost of using hospital check-in. Set to false for free
             Duration = 15 * seconds,                     -- Time it takes to spend in hospital bed
             MaxOnDuty = 3,                               -- If this amount or less you can use, otherwise it will tell you that EMS is avaliable(Set to false to always enable check-in)
             PayAccount = 'bank',                         -- Account dead player pays from to check-in
@@ -504,7 +504,7 @@ Config.Locations = {
             HotKey = 38,                                 -- Default: 38 (E) (If target below is not enabled)
             Target = {
                 enabled = true,                          -- Enable Target? (Can be customized in wasabi_bridge/customize/cl_customize.lua the target system)
-                label = 'Check In',
+                label = 'Se faire soigner',
                 coords = vec3(308.58, -595.31, 43.28),
                 heading = 63.26,
                 distance = 5.0,
@@ -633,79 +633,185 @@ Config.Locations = {
             Coords = vec3(306.63, -601.44, 43.28 - 0.95),                       -- Coords of ped/target
             Heading = 337.64,                                                   -- Heading of ped
             Supplies = {                                                        -- Supplies
-                { item = 'medbag',     label = 'Medical Bag',   price = 1000 }, -- Pretty self explanatory, price may be set to 'false' to make free
-                { item = 'medikit',    label = 'First-Aid Kit', price = 250 },
-                { item = 'morphine30', label = 'Morphine 30MG', price = 100 },
-                { item = 'morphine15', label = 'Morphine 15MG', price = 45 },
-                { item = 'perc30',     label = 'Percocet 30MG', price = 60 },
-                { item = 'perc10',     label = 'Percocet 10MG', price = 40 },
-                { item = 'perc5',      label = 'Percocet 5MG',  price = 30 },
-                { item = 'vic10',      label = 'Vicodin 10MG',  price = 30 },
-                { item = 'vic5',       label = 'Vicodin 5MG',   price = 15 },
+                { item = 'medbag',     label = 'Medical Bag',   }, -- Pretty self explanatory, price may be set to 'false' to make free
+                { item = 'medikit',    label = 'First-Aid Kit', },
+                { item = 'morphine30', label = 'Morphine 30MG', },
+                { item = 'morphine15', label = 'Morphine 15MG', },
+                { item = 'perc30',     label = 'Percocet 30MG', },
+                { item = 'perc10',     label = 'Percocet 10MG', },
+                { item = 'perc5',      label = 'Percocet 5MG',  },
+                { item = 'vic10',      label = 'Vicodin 10MG',  },
+                { item = 'vic5',       label = 'Vicodin 5MG',   },
             }
         },
 
         Vehicles = {                                   -- Vehicle Garage
             Enabled = true,                            -- Enable? False if you have you're own way for medics to obtain vehicles.
             Zone = {
-                coords = vec3(298.54, -606.79, 43.27), -- Area to prompt vehicle garage
+                coords = vec3(337.26, -579.62, 28.8), -- Area to prompt vehicle garage
                 range = 5.5,                           -- Range it will prompt from coords above
-                label = '[E] - Access Garage',
-                return_label = '[E] - Return Vehicle'
+                label = '[E] - Ouvrir le garage',
+                return_label = '[E] - Ranger le véhicule'
             },
             Spawn = {
                 land = {
-                    coords = vec3(296.16, -607.67, 43.25),
-                    heading = 68.43
+                    [0] = {
+                        coords = vec3(317.06, -578.44, 28.57),
+                        heading = 250.18
+                    },
+                    [1] = {
+                        coords = vec3(318.69, -574.1, 28.57),
+                        heading = 250.18
+                    },
+                    [2] = {
+                        coords = vec3(320.29, -569.85, 28.57),
+                        heading = 250.18
+                    },
+                    [3] = {
+                        coords = vec3(321.62, -565.71, 28.57),
+                        heading = 250.18
+                    }
                 },
                 air = {
-                    coords = vec3(351.24, -587.67, 74.55),
-                    heading = 289.29
+                    [0] = {
+                        coords = vec3(350.77, -587.6, 74.56),
+                        heading = 254.46
+                    }
                 }
             },
             Options = {
-                [0] = {                    -- Job grade as table name
-                    ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
+                [0] = { -- Recrue
+                    ['ambulance'] = {
                         label = 'Ambulance',
-                        category = 'land', -- Options are 'land' and 'air'
-                    },
-                    ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-                        label = 'Dodge Charger',
-                        category = 'land', -- Options are 'land' and 'air'
-                    },
-                    ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
-                        label = 'Maverick',
-                        category = 'air',  -- Options are 'land' and 'air'
+                        category = 'land',
+                        extras = {
+                            [1] = true, -- Lumières de toit
+                            [2] = true, -- Lumières pare-soleil
+                            [3] = true, -- Lumières dashboard
+                            [4] = true, -- Pare-Buffle central
+                            [5] = true, -- Pare-Buffle bas
+                            [6] = true, -- Pare-Buffle complet
+                            [7] = true, -- Lumières de plaque
+                            [8] = true, -- Drogue sur le capot
+                            [9] = true, -- Spots lights
+                            [10] = true, -- Antennes toit
+                            [11] = true, -- Antenne arrière
+                            [12] = true, -- Radar
+                        },
+                        livery = 0,
+                        plateIndex = 4
                     },
                 },
 
-                [1] = {
-                    ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
+                [1] = { -- Paramédic
+                    ['ambulance'] = {
                         label = 'Ambulance',
-                        category = 'land', -- Options are 'land' and 'air'
+                        category = 'land',
+                        extras = {
+                            [1] = true, -- Lumières de toit
+                            [2] = true, -- Lumières pare-soleil
+                            [3] = true, -- Lumières dashboard
+                            [4] = true, -- Pare-Buffle central
+                            [5] = true, -- Pare-Buffle bas
+                            [6] = true, -- Pare-Buffle complet
+                            [7] = true, -- Lumières de plaque
+                            [8] = true, -- Drogue sur le capot
+                            [9] = true, -- Spots lights
+                            [10] = true, -- Antennes toit
+                            [11] = true, -- Antenne arrière
+                            [12] = true, -- Radar
+                        },
+                        livery = 0,
+                        plateIndex = 4
                     },
-                    ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-                        label = 'Dodge Charger',
-                        category = 'land', -- Options are 'land' and 'air'
-                    },
-                    ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
+                    ['polmav2'] = { 
                         label = 'Maverick',
-                        category = 'air',  -- Options are 'land' and 'air'
+                        category = 'air',
+                        livery = 1,
                     },
                 },
 
-                [2] = {
-                    ['ambulance'] = {      -- Car/Helicopter/Vehicle Spawn Code/Model Name
+                [2] = { -- Docteur
+                    ['ambulance'] = {
                         label = 'Ambulance',
-                        category = 'land', -- Options are 'land' and 'air'
+                        category = 'land',
+                        extras = {
+                            [1] = true, -- Lumières de toit
+                            [2] = true, -- Lumières pare-soleil
+                            [3] = true, -- Lumières dashboard
+                            [4] = true, -- Pare-Buffle central
+                            [5] = true, -- Pare-Buffle bas
+                            [6] = true, -- Pare-Buffle complet
+                            [7] = true, -- Lumières de plaque
+                            [8] = true, -- Drogue sur le capot
+                            [9] = true, -- Spots lights
+                            [10] = true, -- Antennes toit
+                            [11] = true, -- Antenne arrière
+                            [12] = true, -- Radar
+                        },
+                        livery = 0,
+                        plateIndex = 4
                     },
-                    ['dodgeems'] = {       -- Car/Helicopter/Vehicle Spawn Code/Model Name
-                        label = 'Dodge Charger',
-                        category = 'land', -- Options are 'land' and 'air'
-                    },
-                    ['polmav'] = {         -- Car/Helicopter/Vehicle Spawn Code/Model Name
+                    ['polmav2'] = { 
                         label = 'Maverick',
-                        category = 'air',  -- Options are 'land' and 'air'
+                        category = 'air',
+                        livery = 1,
+                    },
+                },
+
+                [3] = { -- Chef AdjointChef EMS
+                    ['ambulance'] = {
+                        label = 'Ambulance',
+                        category = 'land',
+                        extras = {
+                            [1] = true, -- Lumières de toit
+                            [2] = true, -- Lumières pare-soleil
+                            [3] = true, -- Lumières dashboard
+                            [4] = true, -- Pare-Buffle central
+                            [5] = true, -- Pare-Buffle bas
+                            [6] = true, -- Pare-Buffle complet
+                            [7] = true, -- Lumières de plaque
+                            [8] = true, -- Drogue sur le capot
+                            [9] = true, -- Spots lights
+                            [10] = true, -- Antennes toit
+                            [11] = true, -- Antenne arrière
+                            [12] = true, -- Radar
+                        },
+                        livery = 0,
+                        plateIndex = 4
+                    },
+                    ['polmav2'] = { 
+                        label = 'Maverick',
+                        category = 'air',
+                        livery = 1,
+                    },
+                },
+
+                [4] = { -- Chef EMS
+                    ['ambulance'] = {
+                        label = 'Ambulance',
+                        category = 'land',
+                        extras = {
+                            [1] = true, -- Lumières de toit
+                            [2] = true, -- Lumières pare-soleil
+                            [3] = true, -- Lumières dashboard
+                            [4] = true, -- Pare-Buffle central
+                            [5] = true, -- Pare-Buffle bas
+                            [6] = true, -- Pare-Buffle complet
+                            [7] = true, -- Lumières de plaque
+                            [8] = true, -- Drogue sur le capot
+                            [9] = true, -- Spots lights
+                            [10] = true, -- Antennes toit
+                            [11] = true, -- Antenne arrière
+                            [12] = true, -- Radar
+                        },
+                        livery = 0,
+                        plateIndex = 4
+                    },
+                    ['polmav2'] = { 
+                        label = 'Maverick',
+                        category = 'air',
+                        livery = 1,
                     },
                 }
             }

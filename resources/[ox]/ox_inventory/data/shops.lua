@@ -126,19 +126,18 @@ return {
 	-- },
 
 	Medicine = {
-		name = 'Medicine Cabinet',
-		groups = {
-			['ambulance'] = 0
+		name = 'Pharmacienne',
+		inventory = {
+			{ name = 'medikit', price = 250 },
+			{ name = 'bandage', price = 100 }
 		},
-		blip = {
-			id = 403, colour = 69, scale = 0.8
-		}, inventory = {
-			{ name = 'medikit', price = 26 },
-			{ name = 'bandage', price = 5 }
-		}, locations = {
-			vec3(309.22, -595.1, 43.29)
-		}, targets = {
-
+		targets = {
+			{
+                ped = `s_f_y_scrubs_01`,
+                scenario = 'WORLD_HUMAN_STAND_IMPATIENT',
+                loc = vec3(311.59, -594.2, 42.28),
+                heading = 344,
+            },
 		}
 	},
 
@@ -154,7 +153,7 @@ return {
 			{ name = 'heavy_armour', price = 7500, currency = 'black_money' },
 			{ name = 'military_armour', price = 7500, currency = 'black_money' },
 		}, targets = {
-{
+			{
                 ped = `s_m_y_dealer_01`,
                 scenario = 'prop_human_seat_chair',
                 loc = vec3(908.05, -3200.99, -98.70),

@@ -285,13 +285,13 @@ lib.addCommand('setjob', {
     local success, errorResult = player.Functions.SetJob(args[locale('command.setjob.params.job.name')], args[locale('command.setjob.params.grade.name')] or 0)
     assert(success, json.encode(errorResult))
 
+    -- Retirer tout ce qui est lié à aux métiers
+    TriggerClientEvent('NosCore:client:RemoveRadialItem', player.PlayerData.source, {'toggleDuty', 'custom_police_menu', 'custom_police_menu_vehicle'})
+    
     if player.PlayerData.job.name == 'police' then
         TriggerClientEvent('wasabi_police:client:checkDuty', player.PlayerData.source)
     elseif player.PlayerData.job.name == 'ems' then
         TriggerClientEvent('wasabi_ambulance:client:checkDuty', player.PlayerData.source)
-    else
-        -- Retirer tout ce qui est lié à aux métiers
-        TriggerClientEvent('NosCore:client:RemoveRadialItem', player.PlayerData.source, {'toggleDuty', 'custom_police_menu', 'custom_police_menu_vehicle'})
     end
 end)
 

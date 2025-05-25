@@ -1281,7 +1281,7 @@ CreateThread(function()
                         local playerPed = wsb.cache.ped
                         local coords = GetEntityCoords(playerPed)
                         local dist = #(vector3(coords.x, coords.y, coords.z) - vector3(zone.coords.x, zone.coords.y, zone.coords.z))
-                        local dist2 = #(vector3(coords.x, coords.y, coords.z) - vector3(v.Vehicles.Spawn.air.coords.x, v.Vehicles.Spawn.air.coords.y, v.Vehicles.Spawn.air.coords.z))
+                        local dist2 = #(vector3(coords.x, coords.y, coords.z) - vector3(v.Vehicles.Spawn.air[0].coords.x, v.Vehicles.Spawn.air[0].coords.y, v.Vehicles.Spawn.air[0].coords.z))
                         if dist < zone.range + 1 and not inMenu and not IsPedInAnyVehicle(playerPed, false) then
                             sleep = 0
                             if not textUI then
@@ -1759,17 +1759,33 @@ end)
 AddEventHandler('wasabi_ambulance:spawnVehicle', function(data)
     inMenu = false
     local model = data.model
+
     local category = Config.Locations[data.hospital].Vehicles.Options[data.grade][data.model].category
-    local spawnLoc = Config.Locations[data.hospital].Vehicles.Spawn[category]
+    local spawnLocs = Config.Locations[data.hospital].Vehicles.Spawn[category]
+    local extras = Config.Locations[data.hospital].Vehicles.Options[data.grade][data.model].extras
+    local livery = Config.Locations[data.hospital].Vehicles.Options[data.grade][data.model].livery
+    local plateIndex = Config.Locations[data.hospital].Vehicles.Options[data.grade][data.model].plateIndex
+    local spawnLoc = nil
+
     if not IsModelInCdimage(GetHashKey(model)) then
         print('Vehicle model not found: ' .. model)
     else
-        local nearbyVehicles = wsb.getNearbyVehicles(vec3(spawnLoc.coords.x, spawnLoc.coords.y, spawnLoc.coords.z), 6.0,
-            true)
-        if #nearbyVehicles > 0 then
+        local spawnLocFound = false
+        for i, sl in pairs(spawnLocs) do
+            local nearbyVehicles = wsb.getNearbyVehicles(vec3(sl.coords.x, sl.coords.y, sl.coords.z), 4, true)
+
+            if #nearbyVehicles == 0 then
+                spawnLoc = spawnLocs[i]
+                spawnLocFound = true
+                break
+            end
+        end
+
+        if not spawnLocFound then
             TriggerEvent('wasabi_bridge:notify', Strings.spawn_blocked, Strings.spawn_blocked_desc, 'error')
             return
         end
+
         DoScreenFadeOut(800)
         while not IsScreenFadedOut() do
             Wait(100)
@@ -1777,6 +1793,45 @@ AddEventHandler('wasabi_ambulance:spawnVehicle', function(data)
         wsb.stream.model(model, 12000)
         local vehicle = CreateVehicle(GetHashKey(model), spawnLoc.coords.x, spawnLoc.coords.y, spawnLoc.coords.z,
             spawnLoc.heading, true, false)
+
+        -- Added those lines to set extras and the vehicle's livery and plate
+        if extras and #extras > 0 then
+            for i = 1, #extras do
+                SetVehicleExtra(vehicle, i, not extras[i])
+            end
+        end
+
+        SetVehicleLivery(vehicle, livery)
+
+        if category == 'land' then
+            if not plateCiv then
+                SetVehicleNumberPlateText(vehicle, 'F' .. math.random(000000, 999999))
+            end
+
+            SetVehicleNumberPlateTextIndex(vehicle, plateIndex)
+            SetVehicleDirtLevel(vehicle, 0.0)
+
+            -- Max mods
+            SetVehicleModKit(vehicle, 0)
+            -- Moteur
+            SetVehicleMod(vehicle, 11, GetNumVehicleMods(vehicle, 11) - 1, false)
+            -- Freins
+            SetVehicleMod(vehicle, 12, GetNumVehicleMods(vehicle, 12) - 1, false)
+            -- Transmission
+            SetVehicleMod(vehicle, 13, GetNumVehicleMods(vehicle, 13) - 1, false)
+            -- Turbo
+            ToggleVehicleMod(vehicle, 18, true)
+            -- Tires
+            SetVehicleTyresCanBurst(vehicle, false)
+        end
+
+        -- Appliquer la couleur principale et secondaire
+        SetVehicleColours(vehicle, 0, 0)
+        SetVehicleExtraColours(vehicle, 0, 0)
+        -- Définir la peinture comme mat
+        SetVehicleModColor_1(vehicle, 0, 0, 0)
+        SetVehicleModColor_2(vehicle, 0, 0)
+
         model = GetEntityModel(vehicle)
         if Config.customCarlock then
             local plate = GetVehicleNumberPlateText(vehicle)
@@ -1787,6 +1842,15 @@ AddEventHandler('wasabi_ambulance:spawnVehicle', function(data)
         end
         TaskWarpPedIntoVehicle(wsb.cache.ped, vehicle, -1)
         SetModelAsNoLongerNeeded(model)
+
+        -- Débarrer les portes au spawn
+        if GetResourceState('qbx_vehiclekeys') == 'started' then
+            TriggerEvent('qb-vehiclekeys:server:setVehLockState', netId, 1)
+        else
+            SetVehicleDoorsLocked(veh, 1)
+        end
+        -- Ended
+
         DoScreenFadeIn(800)
     end
 end)
